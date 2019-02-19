@@ -1,11 +1,13 @@
 package com.example.annotation;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+@AAAAA("this is a class")
+public class Test<T> {
 
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.CLASS)
-public @interface Test {
+    @AAAAA("this is a field")
+    String hello;
+
+    @AAAAA("this is a method")
+    public String say(@AAAAA("this is a paramter") String args) {
+        return "Say Hello!";
+    }
 }
