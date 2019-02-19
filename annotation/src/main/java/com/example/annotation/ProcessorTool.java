@@ -1,8 +1,10 @@
 package com.example.annotation;
 
+import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,16 @@ public class ProcessorTool {
         for (int i = 0; i < len; i++) {
             String arg = args.get(i);
             methodBuilder.addStatement("$T arg" + i + "=$S", String.class, args);
+        }
+
+        builder.addMethod(methodBuilder.build());
+
+        JavaFile javaFile = JavaFile.builder("test", builder.build()).build();
+
+        try {
+            javaFile.writeTo(processingEnv.getFiler());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
