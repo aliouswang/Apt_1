@@ -32,7 +32,7 @@ public class ProcessorTool {
         int len = args.size();
         for (int i = 0; i < len; i++) {
             String arg = args.get(i);
-            methodBuilder.addStatement("$T arg" + i + "=$S", String.class, args);
+            methodBuilder.addStatement("$T arg" + i + "=$S", String.class, arg);
         }
 
         builder.addMethod(methodBuilder.build());
