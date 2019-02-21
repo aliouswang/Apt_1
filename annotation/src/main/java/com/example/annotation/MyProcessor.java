@@ -80,6 +80,8 @@ public class MyProcessor extends AbstractProcessor {
             createFile(enclosingElement, bindViewFiledClassType, bindViewFiledName, id);
             return true;
         }
+
+        JavaPoetTest.tryCreateJavaFile(mFiler);
         return false;
     }
 
