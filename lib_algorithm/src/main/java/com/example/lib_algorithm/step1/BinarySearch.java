@@ -8,18 +8,17 @@ public class BinarySearch {
 
     public static int searchWithLoop(int[] array, int target) {
         if (array == null || array.length <= 0) return -1;
-        int len = array.length;
-        int left = 0;
-        int right = len - 1;
-        while(left <= right) {
-            int mid = left + ((right - left) >> 1);
+        int low = 0;
+        int high = array.length - 1;
+        while(low <= high) {
+            int mid = low + ((high - low) >> 1);
             if (array[mid] == target) {
                 return mid;
             }
             else if (array[mid] > target) {
-                right = mid - 1;
+                high = mid - 1;
             }else {
-                left = left + 1;
+                low = mid + 1;
             }
         }
         return -1;
