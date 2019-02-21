@@ -8,9 +8,9 @@ public class Step1_Main {
 
         int [] array = {0, 1, 2, 3, 4, 5, 6, 6, 6, 7, 8, 9};
 
-        Logger.d("search reuslt with loop: " + BinarySearch.search(array, 3, false));
+        Logger.d("search reuslt with loop: " + BinarySearch.binarySearchFirst(array, 6));
 
-        Logger.d("search reuslt with recuration: " + BinarySearch.search(array, 3, true));
+        Logger.d("search reuslt with recuration: " + BinarySearch.search(array, 6, true));
 
     }
 
