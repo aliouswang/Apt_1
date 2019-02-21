@@ -2,6 +2,7 @@ package com.example.annotation;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
+import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
@@ -36,6 +37,7 @@ public class JavaPoetTest {
 
                 .addStaticBlock(codeBlock)
 
+                .addField(FieldSpec.builder(int.class, "mInt", Modifier.PRIVATE).build())
 
                 .build();
 
