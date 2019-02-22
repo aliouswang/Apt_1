@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.WildcardType;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +59,12 @@ public class JavaPoetTest {
                         .returns(int.class)
                         .addParameter(String.class, "string")
                         .addParameter(TypeVariableName.get("T"), "T")
+                        .addParameter(ParameterizedTypeName.get(ClassName.get(Map.class),
+                                ClassName.get(Integer.class), WildcardTypeName.subtypeOf(TypeVariableName.get("T"))), "map")
+                        .addException(IOException.class)
+                        .addException(RuntimeException.class)
+
+                        .addCode(code())
 
                         .build())
 
@@ -72,6 +79,19 @@ public class JavaPoetTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static CodeBlock code() {
+        return CodeBlock.builder()
+                .addStatement("int foo = 1")
+                .addStatement("$T bar = $S", String.class, "a String" )
+                .addStatement("$T obj = new $T(5)", Object.class,
+                        ParameterizedTypeName.get(ClassName.get(HashMap.class),
+                                ClassName.get(Integer.class),
+                                WildcardTypeName.subtypeOf(String.class)
+                                ))
+
+                .build();
     }
 
 }
